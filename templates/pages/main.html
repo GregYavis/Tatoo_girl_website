@@ -1,0 +1,30 @@
+{% load static %}
+
+<title>FRACTURED MOLECULE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="CSS1.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+
+<style>
+    html,body {
+        font-family: "Lato", sans-serif;
+        background: black !important;
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        overflow-x:hidden;
+    }
+</style>
+<body>
+{% include 'pages/navigation_bar.html' %}
+<!-- Page content -->
+
+<div class="container" style="height: 72%">
+    {% block content %}
+
+    {% endblock %}
+
+</div>
+{% include 'pages/SCRIPTS.html' %}
+{% include 'pages/footer.html' %}

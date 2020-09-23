@@ -1,0 +1,10 @@
+{% extends 'pages/main.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="col-lg-3 col-md-6 mb-4">
+    <a href="{{ object.add_to_cart_url }}">{{ object.service_title }}</a>
+    <p> Выбрать время для записи, добавить соответсвующую форму</p>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'pages/main.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row container text-center">
+
+        {% for service in services %}
+            <div class="col-md-4 mb-4" style="border: red solid">
+                <div class="card">
+                    <div class="view overlay">
+                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg"
+                             class="card-img-top"
+                             alt="">
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% for service in services %}
+            <div class="col-sm">
+                <a href="{{ service.get_absolute_url }}">
+                    <button type="button" class="btn btn-outline-danger">
+                        {{ service.service_title }}</button>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
