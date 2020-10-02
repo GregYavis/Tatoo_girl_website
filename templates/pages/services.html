@@ -5,17 +5,19 @@
     <div class="row container text-center">
 
         {% for service in services %}
-            <div class="col-md-4 mb-4" style="border: red solid">
-                <div class="card">
-                    <div class="view overlay">
+            <div class="col-md-4 mb-4" {% comment %}style="border: red solid"{% endcomment %}>
+
+                    <div class="view overlay" style="border-radius: 20px;
+                    background-color: black">
                         <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg"
                              class="card-img-top"
+
                              alt="">
                     </div>
-                </div>
+
             </div>
         {% endfor %}
-        {% for service in services %}
+    {% for service in services %}
             <div class="col-sm">
                 <a href="{{ service.get_absolute_url }}">
                     <button type="button" class="btn btn-outline-danger">

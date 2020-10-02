@@ -1,10 +1,27 @@
 {% extends 'pages/main.html' %}
 {% load static %}
+{% load fontawesome_5 %}
+{% fontawesome_5_static %}
 {% block content %}
-{% for ordered_service in object.services.all %}
-    <div class="col-lg-3 col-md-6 mb-4">
-    <a>{{ ordered_service.service.service_title }}</a>
-    <p>-----------------------</p>
+    <div class="container">
+
+        <div class="table-responsive text-nowrap">
+            <h2>Вы записаны на следущие услуги</h2>
+            <table class="table">
+
+                <tbody>
+                {% for ordered_service in object.services.all %}
+                    {% comment %}<div class="col-lg-3 col-md-6 mb-4">{% endcomment %}
+                    <tr>
+                        <td>{{ ordered_service.service.service_title }}</td>
+                        <td><a href="{% url 'tattoo:remove-service-from-cart' ordered_service.service.slug %}">
+                            {% fa5_icon 'minus' %}</a></td>
+                    </tr>
+
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
-{% endfor %}
+
 {% endblock %}

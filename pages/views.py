@@ -75,10 +75,31 @@ def add_to_cart(request, slug):
         return redirect('tattoo:services-page')
 
 
+@login_required
+def remove_from_cart(request, slug):
+    service = get_object_or_404(Service, slug=slug)
+    ordered_service_qs = Order.objects.filter(
+        customer=request.user
+    )
+    if ordered_service_qs.exists():
+        order = ordered_service_qs[0]
+        if order.services.filter(service__slug=service.slug).exists():
+            ordered_service = OrderedService.objects.filter(
+                service=service,
+                customer=request.user
+            )[0]
+            messages.warning(request, 'Запись на услугу отменена')
+            order.services.remove(ordered_service)
+            return redirect('tattoo:user-ordered-services')
+        else:
+            messages.info(request, 'Вы не записаны на услугу')
+            return redirect('tattoo:service-details', slug=slug)
+    else:
+        messages.info(request, 'Вы не записаны ни на одну из услуг')
+        return redirect('tattoo:service-details', slug=slug)
 
 
-
-"""
+""" 
 class PortfolioPage(ListView):
     template_name = 'pages/portfolio.html'
 """

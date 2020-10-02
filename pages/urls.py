@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from .views import main_page, Home, PortfolioPage, \
     AdvicesView, LoginRegisterChoice, ServiceDetails, ServicesAll, \
-    add_to_cart, UserOrderedServices
+    add_to_cart, remove_from_cart, UserOrderedServices
 
 app_name = 'tattoo'
 urlpatterns = [
@@ -16,5 +16,7 @@ urlpatterns = [
     path('add-service-to-cart/<slug>/', add_to_cart,
          name='add-service-to-cart'),
     path('my-ordered-services/', UserOrderedServices.as_view(),
-         name='user-ordered-services')
+         name='user-ordered-services'),
+    path('remove-service-from-cart/<slug>', remove_from_cart,
+         name='remove-service-from-cart')
 ]
